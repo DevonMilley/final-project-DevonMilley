@@ -5,44 +5,53 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import json
 import requests
-import logging
-
-logging.basicConfig(level=logging.DEBUG)
+import pdfplumber
 
 
 ###
 # Google Authentication
 ###
 
-# Define the path to the service account JSON file
-#SERVICE_ACCOUNT_FILE = os.environ.get('GOOGLE_SERVICE')
-#creds_dict = json.loads(SERVICE_ACCOUNT_FILE)
-#creds = service_account.Credentials.from_service_account_info(creds_dict)
-
 # Load the Google service account JSON secret from an environment variable
-service_account_info = json.loads(os.environ['GOOGLE_SERVICE_SECRET'])
+#service_account_info = json.loads(os.environ['GOOGLE_SERVICE_SECRET'])
 
 # Create a credentials object from the service account info
-creds = service_account.Credentials.from_service_account_info(service_account_info)
+#creds = service_account.Credentials.from_service_account_info(service_account_info)
 
 # Define the scopes that the application needs access to
-SCOPES = ['https://www.googleapis.com/auth/drive']
+#SCOPES = ['https://www.googleapis.com/auth/drive']
 
 # Set up the Drive API client
-drive_service = build('drive', 'v3', credentials=creds)
+#drive_service = build('drive', 'v3', credentials=creds)
+
+
 
 ###
-# Getting the PDF
+# chat gpt example with one entry
 ###
+# read the text file and split by lines
+with open('file.txt', 'r') as f:
+    lines = f.read().splitlines()
 
-with open('2022 DBK Stylebook.html', 'r') as f:
-    html_text = f.read()
+# create empty lists for name, description, and tag
+name_list = []
+description_list = []
+tag_list = []
 
-pdf_soup = BeautifulSoup(html_text, 'html.parser')
+# loop through each line in the file and split by spaces
+for line in lines:
+    words = line.split()
 
-b_tag = pdf_soup.find_all("p", {"class": "s10"})
+    # if the line starts with "important", it is a new tag
+    if words[0] == "important":
+        tag = words[0]
+        name = ""
+        description = " ".join(words[1:])
 
-print(b_tag)
+
+
+
+
 
 
 ###
