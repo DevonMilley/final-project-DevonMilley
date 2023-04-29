@@ -7,6 +7,10 @@ import json
 import requests
 import pdfplumber
 
+app = Flask(__name__)
+app.secret_key = "279878dhekdhkhekdhkh" #can i use the same api key for this
+db = SqliteDatabase('foreclosures.db')
+
 
 ###
 # Google Authentication
@@ -24,31 +28,10 @@ import pdfplumber
 # Set up the Drive API client
 #drive_service = build('drive', 'v3', credentials=creds)
 
+# Read dbk_stylebook csv
+csv_data = pd.read_csv('dbk_stylebook.csv')
 
-
-###
-# chat gpt example with one entry
-###
-# read the text file and split by lines
-with open('file.txt', 'r') as f:
-    lines = f.read().splitlines()
-
-# create empty lists for name, description, and tag
-name_list = []
-description_list = []
-tag_list = []
-
-# loop through each line in the file and split by spaces
-for line in lines:
-    words = line.split()
-
-    # if the line starts with "important", it is a new tag
-    if words[0] == "important":
-        tag = words[0]
-        name = ""
-        description = " ".join(words[1:])
-
-
+print(csv_data)
 
 
 
@@ -70,7 +53,8 @@ for line in lines:
 # soup = BeautifulSoup(doc_content, 'html.parser')
 
 
-
+#if __name__ == '__main__':
+ #   app.run(debug=True, use_reloader=True)
 
 
 
