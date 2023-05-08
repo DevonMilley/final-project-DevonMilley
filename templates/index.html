@@ -4,6 +4,68 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
     </head>
     <body>
-        <h1>The Diamondback Style Guide</h1>
-    </body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">The Diamondback Stylebook</a>
+        </nav>
+          <div class="jumbotron">
+            <div class="container">
+                <h4>Dear reader,</h4>
+                <p>The Diamondback’s stylebook is a guidance
+                    and reference for specific terms and topics we
+                    cover.
+                    This stylebook represents how we cover our
+                    community, and each term is created with
+                    consideration and respect for those we cover.
+                    This stylebook is not meant to become an
+                    archaic, outdated reference — it is a living and
+                    breathing guide that will change and update as
+                    we learn, grow and change.
+                    If an entry no longer represents or reflects
+                    a community or subject, then it is subject to
+                    change.
+                    Always be open to change and adjustments
+                    — be consistent, but not to a fault. Sometimes
+                    consistency is a place where accuracy goes to
+                    fade.
+                    Read this entire stylebook, it is a very fun
+                    document.</p>
+                    <br>
+                <h2>Style Tips</h2>
+                <hr>
+                <div class="row">
+                <ul class="list-unstyled">
+                    {% for tip in all_tips %}
+                    <h4>{{ tip.name }}</h4>
+                    <h5>{{ tip.tag_1 }} {{ tip.tag_2 }}</h5>
+                    <p>{{ tip.description }}</p>
+                        {% if loop.index % 3 == 0 and not loop.last %}
+                        </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="list-unstyled">
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                    </div>
+                    <h2>Created by</h2>
+                <h5>Zoe Pierce<br>
+                    Anaya M. Truss-Williams<br>
+                    Ella Sherman<br>
+                    Nataraj Shivaprasad<br>
+                    Gabrielle Lewis<br>
+                    Devon Milley<br>
+                    Izzy Quintana<br>
+                    Jessica Umbro<br>
+                    Daisy Grant<br>
+                    Angela Mecca</h5>
+                <h2>Designed by</h2>
+                <h5>Hanna Zakharenko<br>
+                    Jenna Bloom<br>
+                    Ogenna Umeozulu<br>
+                    Vincent Petroni</h5> 
+                </div> 
+                  
+        </div>
+        </body>
 </html>

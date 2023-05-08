@@ -5,18 +5,35 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import json
 import requests
-import pdfplumber
 from flask import Flask
 from flask import render_template
+from peewee import *
 
 app = Flask(__name__)
 #app.secret_key = "279878dhekdhkhekdhkh" #can i use the same api key for this
 #db = SqliteDatabase('foreclosures.db')
 
+db = SqliteDatabase('stylebook.db')
+
+
+class Stylebook(Model):
+    id = IntegerField(unique=True)
+    name = CharField()
+    description = CharField()
+    tags = CharField()
+
+    class Meta:
+        table_name = "style_tips"
+        database = db
+
 @app.route("/")
 def index():
+    all_tips = Stylebook.select()
     template = 'index.html'
-    return render_template(template)
+    return render_template(template, all_tips = all_tips)
+
+
+
 
 
 ###
@@ -36,7 +53,7 @@ def index():
 #drive_service = build('drive', 'v3', credentials=creds)
 
 # Read dbk_stylebook csv
-csv_data = pd.read_csv('dbk_stylebook.csv')
+#csv_data = pd.read_csv('dbk_stylebook.csv')
 
 
 
