@@ -6,10 +6,17 @@ from googleapiclient.discovery import build
 import json
 import requests
 import pdfplumber
+from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
-app.secret_key = "279878dhekdhkhekdhkh" #can i use the same api key for this
-db = SqliteDatabase('foreclosures.db')
+#app.secret_key = "279878dhekdhkhekdhkh" #can i use the same api key for this
+#db = SqliteDatabase('foreclosures.db')
+
+@app.route("/")
+def index():
+    template = 'index.html'
+    return render_template(template)
 
 
 ###
@@ -31,7 +38,6 @@ db = SqliteDatabase('foreclosures.db')
 # Read dbk_stylebook csv
 csv_data = pd.read_csv('dbk_stylebook.csv')
 
-print(csv_data)
 
 
 
@@ -53,8 +59,8 @@ print(csv_data)
 # soup = BeautifulSoup(doc_content, 'html.parser')
 
 
-#if __name__ == '__main__':
- #   app.run(debug=True, use_reloader=True)
+if __name__ == '__main__':
+   app.run(debug=True, use_reloader=True)
 
 
 
