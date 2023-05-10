@@ -35,21 +35,30 @@
                 <div class="row">
                 <ul class="list-unstyled">
                     {% for tip in all_tips %}
-                    <h4>{{ tip.name }}</h4>
+                    <h4>{{ tip.name | safe }}</h4>
                     <h5>{{ tip.tag_1 }} {{ tip.tag_2 }}</h5>
-                    <p>{{ tip.description }}</p>
+                    <ul>
+                        {% set lines = tip.description.split('<br>') %}
+                        {% for line in lines %}
+                            {% if line.strip() != '' %}
+                                <li>{{ line.strip() | safe }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                         {% if loop.index % 3 == 0 and not loop.last %}
                         </ul>
                             </div>
-                            <div class="col-md-4">
+                            <div class="row">
                                 <ul class="list-unstyled">
                             {% endif %}
                         {% endfor %}
                     </ul>
                 </div>
                     </div>
+                    <div class="row">
                     <h2>Created by</h2>
-                <h5>Zoe Pierce<br>
+                    <br>
+                    <p>Zoe Pierce<br>
                     Anaya M. Truss-Williams<br>
                     Ella Sherman<br>
                     Nataraj Shivaprasad<br>
@@ -58,12 +67,16 @@
                     Izzy Quintana<br>
                     Jessica Umbro<br>
                     Daisy Grant<br>
-                    Angela Mecca</h5>
+                    Angela Mecca</p>
+                </div>
+                <div class="row">
                 <h2>Designed by</h2>
-                <h5>Hanna Zakharenko<br>
+                <br>
+                <p>Hanna Zakharenko<br>
                     Jenna Bloom<br>
                     Ogenna Umeozulu<br>
-                    Vincent Petroni</h5> 
+                    Vincent Petroni</p> 
+                </div>
                 </div> 
                   
         </div>
