@@ -31,6 +31,37 @@
                     document.</p>
                     <br>
                 <hr>
+                <h3>Search for a word or phrase</h3>
+            <form method="POST">
+                <input type="text" id="search_term" name="search_term" required minlength="3">
+                <button type="submit">Submit</button>
+            </form>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                <li{% if category %} class="{{ category }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% if results and document_count > 0 %}
+            <h3>{{ search_term }} was mentioned in {{ document_count }} documents</h3>
+            <div class="row">
+                <div class="col-md-4">
+                <ul class="list-unstyled">
+                    {% for result in results %}
+                        <li>{{ result.file }}</li>
+                    {% endfor %}
+                </ul>
+                </div>
+            </div>
+            {% elif document_count == 0 %}
+                <p>Your search term produced no results. Try again?</p>
+            {% else %}
+                <p>There are {{ document_count }} entries in the database.</p>
+            {% endif %}
+            <br>
                 <div class="row">
                 <ul class="list-unstyled">
                     {% for tip in all_tips %}
