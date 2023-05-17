@@ -47,26 +47,35 @@
             {% endwith %}
             {% if results and document_count > 0 %}
             <h3>{{ search_term }} was mentioned in {{ document_count }} documents</h3>
+            <br>
             <div class="row">
-                <div class="col-md-4">
                 <ul class="list-unstyled">
                     {% for result in results %}
-                        <li>{{ result.file }}</li>
+                        <h4>{{ result.name | safe }}</h4>
+                        <p><b>{{ result.tags }}</b></p>
+                        <ul>
+                            {% set lines = result.description.split('<br>') %}
+                            {% for line in lines %}
+                                {% if line.strip() != '' %}
+                                    <li>{{ line.strip() | safe }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
                     {% endfor %}
-                </ul>
-                </div>
+                    </ul>
             </div>
             {% elif document_count == 0 %}
                 <p>Your search term produced no results. Try again?</p>
             {% else %}
                 <p>There are {{ document_count }} entries in the database.</p>
             {% endif %}
+            {% if document_count == 0 or search_term == None %}
             <br>
                 <div class="row">
                 <ul class="list-unstyled">
                     {% for tip in all_tips %}
                     <h4>{{ tip.name | safe }}</h4>
-                    <h5>{{ tip.tag_1 }} {{ tip.tag_2 }}</h5>
+                    <p><b>{{ tip.tags }}</b></p>
                     <ul>
                         {% set lines = tip.description.split('<br>') %}
                         {% for line in lines %}
@@ -85,6 +94,7 @@
                     </ul>
                 </div>
                     </div>
+                    {% endif %}
                     <div class="row">
                     <h2>Created by</h2>
                     <br>
