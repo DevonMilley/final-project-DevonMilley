@@ -19,16 +19,20 @@
                     <img src="{{ url_for('static', filename='DBK-Logo-Box.png') }}">
                     <a class="navbar-brand" href="/">The Diamondback Stylebook</a>
                 </div>
-                <div class="col justify-content-center">
-                    <a class="btn nav-button" href="/open_important" role="button">IMPORTANT</a>
-                    <a class="btn nav-button" href="/open_ap_dev" role="button">AP DEVIATION</a>
-                    <a class="btn nav-button" href="/open_sports" role="button">SPORTS</a>
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                    <a class="btn nav-button mx-2" href="/open_important" role="button">IMPORTANT</a>
+                    <a class="btn nav-button mx-2" href="/open_ap_dev" role="button">AP DEVIATION</a>
+                    <a class="btn nav-button mx-2" href="/open_sports" role="button">SPORTS</a>
                     </div>
-                    <div class="col justify-content-end">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-end">
                     <form method="POST"">
                         <input type="text" id="search_term" name="search_term" required minlength="3" placeholder="Search for a tip">
                         <button type="submit" class="btn btn-outline-light">Submit</button>
                     </form>
+                </div>
                 </div>
             </div>
             </div>
