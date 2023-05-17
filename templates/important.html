@@ -13,24 +13,19 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="containter full-nav">
-                <div class="row align-items-center">
-                <div class="col">
-                    <img src="{{ url_for('static', filename='DBK-Logo-Box.png') }}">
-                    <a class="navbar-brand" href="/">The Diamondback Stylebook</a>
+            <div class="container-fluid">
+                <img src="{{ url_for('static', filename='DBK-Logo-Box.png') }}">
+                <a class="navbar-brand" href="/open_index">The Diamondback Stylebook</a>
                 </div>
-                <div class="col justify-content-center">
-                    <a class="btn nav-button" href="/open_important" role="button">IMPORTANT</a>
+                <div class="d-flex flex-row-reverse">
+                    <a class="btn nav-button" href="#" role="button">IMPORTANT</a>
                     <a class="btn nav-button" href="/open_ap_dev" role="button">AP DEVIATION</a>
                     <a class="btn nav-button" href="/open_sports" role="button">SPORTS</a>
-                    </div>
-                    <div class="col justify-content-end">
-                    <form method="POST"">
+                    <form method="POST" class="ms-3">
                         <input type="text" id="search_term" name="search_term" required minlength="3" placeholder="Search for a tip">
                         <button type="submit" class="btn btn-outline-light">Submit</button>
                     </form>
                 </div>
-            </div>
             </div>
         </nav>
         <div class="jumbotron">
@@ -38,26 +33,7 @@
                 <button onclick="topFunction()" id="scrollToTopBtn" title="Scroll to Top">Scroll to Top</button>
                 {% if document_count == 0 or search_term == None %}
                 <div class="row">
-                    <h4>Dear reader,</h4>
-                    <p>The Diamondback’s stylebook is a guidance
-                    and reference for specific terms and topics we
-                    cover.
-                    This stylebook represents how we cover our
-                    community, and each term is created with
-                    consideration and respect for those we cover.
-                    This stylebook is not meant to become an
-                    archaic, outdated reference — it is a living and
-                    breathing guide that will change and update as
-                    we learn, grow and change.
-                    If an entry no longer represents or reflects
-                    a community or subject, then it is subject to
-                    change.
-                    Always be open to change and adjustments
-                    — be consistent, but not to a fault. Sometimes
-                    consistency is a place where accuracy goes to
-                    fade.
-                    Read this entire stylebook, it is a very fun
-                    document.</p>
+                    <h3>Here are entries that are tagged as 'important.'</h3>
                     <br>
                     <hr>
                 </div>
@@ -107,6 +83,7 @@
                 <div class="row">
                     <ul class="list-unstyled">
                         {% for tip in all_tips %}
+                        {% if 'IMPORTANT' in tip.tags %}
                         <div class="style-entry">
                             <h4><b>{{ tip.name | safe }}</b></h4>
                             <p>{{ tip.tags }}</p>
@@ -125,10 +102,11 @@
                 <div class="row">
                     <ul class="list-unstyled">
                         {% endif %}
+                        {% endif %} 
                         {% endfor %}
                     </ul>
                 </div>
-                {% endif %}    
+                {% endif %}
                 <br><br>
                 <hr>
                 {% if results and document_count > 0 %}
@@ -204,4 +182,3 @@
             </div> 
         </div>
     </body>
-</html>

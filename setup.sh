@@ -4,4 +4,6 @@ rm stylebook.db
 
 sqlite-utils insert stylebook.db style_tips static/dbk_stylebook.csv --csv
 
+python get_index.py
+
 #to run, 'sh setup.sh'
