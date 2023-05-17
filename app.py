@@ -74,7 +74,7 @@ def open_important():
 def important():
     if request.method == 'POST':
         search_term = request.form['search_term']
-        results = (Stylebook.select(Stylebook, StylebookIndex.rank()).join(StylebookIndex,on=(Stylebook.id == StylebookIndex.rowid)).where(StylebookIndex.match(search_term)).order_by(Stylebook.name))
+        results = (Stylebook.select(Stylebook, StylebookIndex.rank()).join(StylebookIndex,on=(Stylebook.id == StylebookIndex.rowid)).where(StylebookIndex.match(search_term) & (Stylebook.tags.contains("IMPORTANT"))).order_by(Stylebook.name))
         document_count = len(list(set([x for x in results])))
         if document_count > 0:
             recent = results.get()
@@ -101,7 +101,7 @@ def open_ap_dev():
 def ap_dev():
     if request.method == 'POST':
         search_term = request.form['search_term']
-        results = (Stylebook.select(Stylebook, StylebookIndex.rank()).join(StylebookIndex,on=(Stylebook.id == StylebookIndex.rowid)).where(StylebookIndex.match(search_term)).order_by(Stylebook.name))
+        results = (Stylebook.select(Stylebook, StylebookIndex.rank()).join(StylebookIndex,on=(Stylebook.id == StylebookIndex.rowid)).where(StylebookIndex.match(search_term) & (Stylebook.tags.contains("AP DEVIATION"))).order_by(Stylebook.name))
         document_count = len(list(set([x for x in results])))
         if document_count > 0:
             recent = results.get()
@@ -128,7 +128,7 @@ def open_sports():
 def sports():
     if request.method == 'POST':
         search_term = request.form['search_term']
-        results = (Stylebook.select(Stylebook, StylebookIndex.rank()).join(StylebookIndex,on=(Stylebook.id == StylebookIndex.rowid)).where(StylebookIndex.match(search_term)).order_by(Stylebook.name))
+        results = (Stylebook.select(Stylebook, StylebookIndex.rank()).join(StylebookIndex,on=(Stylebook.id == StylebookIndex.rowid)).where(StylebookIndex.match(search_term) & (Stylebook.tags.contains("SPORTS"))).order_by(Stylebook.name))
         document_count = len(list(set([x for x in results])))
         if document_count > 0:
             recent = results.get()
