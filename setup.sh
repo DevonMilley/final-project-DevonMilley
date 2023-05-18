@@ -1,4 +1,4 @@
-pip install google-api-python-client bs4 requests google-auth google-auth-oauthlib google-auth-httplib2 aiohttp datetime flask pandas sqlite-utils peewee pdfplumber python-dateutil
+pip install bs4 requests aiohttp datetime flask pandas sqlite-utils peewee pdfplumber python-dateutil
 
 rm stylebook.db
 

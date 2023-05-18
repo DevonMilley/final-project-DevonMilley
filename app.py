@@ -1,9 +1,6 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 import os
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
-import json
 import requests
 from flask import Flask, render_template, request, flash, redirect, url_for
 from playhouse.sqlite_ext import *
