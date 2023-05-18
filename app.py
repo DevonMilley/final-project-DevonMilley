@@ -143,46 +143,6 @@ def sports():
     return render_template('sports.html', all_tips=all_tips, results=results, document_count=document_count, search_term=search_term, recent=recent)
 
 
-###
-# Google Authentication
-###
-
-# Load the Google service account JSON secret from an environment variable
-#service_account_info = json.loads(os.environ['GOOGLE_SERVICE_SECRET'])
-
-# Create a credentials object from the service account info
-#creds = service_account.Credentials.from_service_account_info(service_account_info)
-
-# Define the scopes that the application needs access to
-#SCOPES = ['https://www.googleapis.com/auth/drive']
-
-# Set up the Drive API client
-#drive_service = build('drive', 'v3', credentials=creds)
-
-# Read dbk_stylebook csv
-#csv_data = pd.read_csv('dbk_stylebook.csv')
-
-
-
-
-
-
-###
-# Grab Google Doc information and manipulate
-###
-
-# Retrieve the content of the Google Doc in HTML format
-# file_id = '1wBtEXq3LsxVOjqMT0RoEoQxbJShfPu1H2M0gLsJOOY8'
-# export_mime_type = 'text/html'
-# response = drive_service.files().export(fileId=file_id, mimeType=export_mime_type).execute()
-
-# # Extract the HTML content from the API response
-# doc_content = response.decode('utf-8')
-
-# # Parse the HTML content using Beautiful Soup
-# soup = BeautifulSoup(doc_content, 'html.parser')
-
-
 if __name__ == '__main__':
    app.run(debug=True, use_reloader=True)
 
