@@ -16,7 +16,7 @@
             <div class="containter full-nav">
                 <div class="row align-items-center">
                 <div class="col">
-                    <img src="{{ url_for('static', filename='DBK-Logo-Box.png') }}">
+                    <a href="https://dbknews.com/" target="_blank"><img src="{{ url_for('static', filename='DBK-Logo-Box.png') }}"></a>
                     <a class="navbar-brand" href="/open_index">The Diamondback Stylebook</a>
                 </div>
                 <div class="col">
@@ -24,6 +24,7 @@
                     <a class="btn nav-button mx-2" href="#" role="button">IMPORTANT</a>
                     <a class="btn nav-button mx-2" href="/open_ap_dev" role="button">AP DEVIATION</a>
                     <a class="btn nav-button mx-2" href="/open_sports" role="button">SPORTS</a>
+                    <a class="btn nav-button mx-2" href="https://dbknews.com/" target="_blank" role="button">Visit The DBK</a>
                     </div>
                     </div>
                     <div class="col">
@@ -118,9 +119,8 @@
                 {% endif %}
                 <br><br>
                 <hr>
-                {% if results and document_count > 0 %}
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-6">
                         <h4>Dear reader,</h4>
                         <p>The Diamondback’s stylebook is a guidance
                         and reference for specific terms and topics we
@@ -142,52 +142,22 @@
                         Read this entire stylebook, it is a very fun
                         document.</p>
                     </div>
-                    <div class="col-4">
-                        <h2>Created by</h2>
-                        <p>Zoe Pierce<br>
-                        Anaya M. Truss-Williams<br>
-                        Ella Sherman<br>
-                        Nataraj Shivaprasad<br>
-                        Gabrielle Lewis<br>
-                        Devon Milley<br>
-                        Izzy Quintana<br>
-                        Jessica Umbro<br>
-                        Daisy Grant<br>
-                        Angela Mecca</p>
-                    </div>
-                    <div class="col-4">
-                        <h2>Designed by</h2>
-                        <p>Hanna Zakharenko<br>
-                        Jenna Bloom<br>
-                        Ogenna Umeozulu<br>
-                        Vincent Petroni</p> 
-                    </div>
-                </div>
-                {% elif document_count == 0 or search_term == None %}
-                <div class="row">
                     <div class="col-6">
                         <h2>Created by</h2>
-                        <p>Zoe Pierce<br>
-                        Anaya M. Truss-Williams<br>
-                        Ella Sherman<br>
-                        Nataraj Shivaprasad<br>
-                        Gabrielle Lewis<br>
-                        Devon Milley<br>
-                        Izzy Quintana<br>
-                        Jessica Umbro<br>
-                        Daisy Grant<br>
-                        Angela Mecca</p>
-                    </div>
-                    <div class="col-6">
-                        <h2>Designed by</h2>
-                        <p>Hanna Zakharenko<br>
-                        Jenna Bloom<br>
-                        Ogenna Umeozulu<br>
-                        Vincent Petroni</p> 
+                        <ul>
+                            <li>Zoe Pierce</li>
+                            <li>Anaya M. Truss-Williams</li>
+                            <li>Ella Sherman</li>
+                            <li>Nataraj Shivaprasad</li>
+                            <li>Gabrielle Lewis</li>
+                            <li>Devon Milley</li>
+                            <li>Izzy Quintana</li>
+                            <li>Jessica Umbro</li>
+                            <li>Daisy Grant</li>
+                            <li>Angela Mecca</li>
+                        </ul>
                     </div>
                 </div>
-                {% else %}
-                {% endif %}
             </div> 
         </div>
     </body>
