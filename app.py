@@ -7,7 +7,6 @@ from playhouse.sqlite_ext import *
 from peewee import *
 
 app = Flask(__name__)
-#app.secret_key = "279878dhekdhkhekdhkh" #can i use the same api key for this
 
 db = SqliteExtDatabase('stylebook.db')
 
